@@ -2,10 +2,22 @@ import logo from './logo.svg';
 import './App.css';
 import Navi from './components/Navi'
 import CryptoTable from './components/CryptoTable'
-import {useState, useEffect} from 'react'
+import Jumbo from './components/Jumbo'
+import {useState, useEffect, history} from 'react'
+
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
+
 function App() {
 
-const [cryptoList, setCryptoList] =useState([])
+
+const [cryptoList, setCryptoList] = useState([])
+const [user, setUser] = useState('')
+const formInitialState = {
+  username:'',
+  password:''
+}
+const [userForm, setUserForm] = useState(formInitialState)
 
 const indexGetRequest = () => {
   fetch('http://localhost:3000/crypto')
@@ -13,33 +25,27 @@ const indexGetRequest = () => {
   .then((data)=> setCryptoList(data))
 }
 
+
+
+
+const handleChange = (event) => {
+		setUserForm({ ...userForm, [event.target.name]: event.target.value });
+	}
+
 useEffect(()=> {
   indexGetRequest()
 },[])
 
 
-// const loaded = () => {
-//   return(
-//     cryptoList.data.map((crypto)=> {
-//       return (
-//         <li>{crypto.name}</li>
-//       )
-//     })
-//   )
-// }
-//
-// const loading =()=> {
-//   return (
-//     <h1> Loading</h1>
-//   )
-// }
+
 
 
   return (
     <div className="App">
     <Navi />
+    <Jumbo />
     <CryptoTable cryptoList={cryptoList.data} />
-  
+
     </div>
   );
 }
