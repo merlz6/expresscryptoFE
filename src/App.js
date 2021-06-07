@@ -4,7 +4,7 @@ import Navi from './components/Navi'
 import CryptoTable from './components/CryptoTable'
 import Jumbo from './components/Jumbo'
 import {useState, useEffect, history} from 'react'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, History } from 'react-router-dom'
 import SingleCrypto from './components/SingleCrypto'
 import Home from './components/Home'
 import Watchlist from './components/Watchlist'
@@ -12,7 +12,6 @@ function App() {
 
 
 const [cryptoList, setCryptoList] = useState([])
-const [user, setUser] = useState('')
 const localWatchlist = localStorage.getItem('watchlist') ? JSON.parse(localStorage.getItem('watchlist')) : []
 const [watchlist, setWatchlist] = useState(localWatchlist)
 
@@ -45,12 +44,26 @@ const addToList = (symbol) => {
   console.log(watchlist)
 }
 
+const deleteFromWatchlist = (symbol) => {
+let index = watchlist.indexOf(symbol)
+console.log(index , 'this is the index')
+  if(watchlist.includes(symbol)){
+
+    let newArr = watchlist
+    newArr.splice(index,1)
+    setWatchlist(newArr)
+  }
+
+}
+
+
+
 
   return (
     <div className="App">
       <Switch>
     <Route exact path="/">
-        <Home />
+        <Home addToList={addToList} cryptoList={cryptoList.data} watchlist={watchlist} />
     </Route>
     <Route
         path='/cryptos/:id'
@@ -58,7 +71,7 @@ const addToList = (symbol) => {
     />
     <Route
         path="/watchlist"
-        render={props => <Watchlist watchlist={watchlist} />}
+        render={props => <Watchlist deleteFromWatchlist={deleteFromWatchlist} cryptolist={cryptoList.data} watchlist={watchlist} />}
     />
 </Switch>
 

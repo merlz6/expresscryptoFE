@@ -7,7 +7,7 @@ import {useState, useEffect, history} from 'react'
 
 
 
-function Home() {
+function Home(props) {
 
 
 const [cryptoList, setCryptoList] = useState([])
@@ -32,17 +32,7 @@ useEffect(()=> {
 
 
 
-const addToList = (symbol) => {
 
-  if(watchlist.includes(symbol)){
-    console.log('already on watch list')
-  } else {
-    let newArr = watchlist
-    newArr.push(symbol)
-    setWatchlist(newArr)
-  }
-  console.log(watchlist)
-}
 
 
   return (
@@ -50,7 +40,7 @@ const addToList = (symbol) => {
 
     <Navi />
     <Jumbo />
-    <CryptoTable cryptoList={cryptoList.data} addToList={addToList}/>
+    <CryptoTable watchlist={watchlist} cryptoList={props.cryptoList} addToList={props.addToList}/>
 
     </div>
   );

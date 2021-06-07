@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 function Navi() {
   return (
     <Navbar className="container-fluid" collapseOnSelect expand="lg" bg="dark" variant="dark">
-      <Navbar.Brand href="#home">Crypto-FrontEnd</Navbar.Brand>
+      <Navbar.Brand href="#home"> <Link to="/">Crypto-FrontEnd</Link></Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse  id="responsive-navbar-nav">
         <Nav className="ml-auto" c>

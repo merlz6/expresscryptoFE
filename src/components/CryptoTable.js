@@ -1,6 +1,8 @@
 import Table from 'react-bootstrap/Table';
 import { Link } from 'react-router-dom'
 function CryptoTable(props) {
+console.log(props.cryptoList)
+
 
   const loaded = () => {
 
@@ -9,7 +11,11 @@ function CryptoTable(props) {
         let imageString = 'https://s2.coinmarketcap.com/static/img/coins/32x32/' +crypto.id + '.png'
         return (
           <tr key={index}>
-          <td className="favoriteStarHolder" onClick={(()=> props.addToList(crypto.symbol) )}><img src="https://img.icons8.com/metro/20/000000/star.png"/></td>
+          <td className="favoriteStarHolder" onClick={(()=> props.addToList(crypto.symbol) )}>
+{props.watchlist.includes(crypto.symbol) ? <img src="https://img.icons8.com/metro/20/fdc10d/star.png"/> : <img src="https://img.icons8.com/metro/20/000000/star.png"/>}
+
+
+            </td>
           <td>{index + 1}</td>
           <td><div className="coinNameHolder"><img className="coinIcon" src={imageString} /><span className="cryptoNameSpan"><Link to={`/cryptos/${crypto.id}`}>{crypto.name}</Link></span> <span className="cryptoSymbolSpan">{crypto.symbol}</span></div></td>
           <td>{crypto.quote.USD.price.toLocaleString('us-US', { style: 'currency', currency: 'USD', maximumFractionDigits:2 })}</td>
