@@ -1,6 +1,7 @@
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Navbar, Nav, NavDropdown} from 'react-bootstrap';
+import { Link } from 'react-router-dom'
 
 function Navi() {
   return (
@@ -9,10 +10,10 @@ function Navi() {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse  id="responsive-navbar-nav">
         <Nav className="ml-auto" c>
-          <Nav.Link href="#features">Cryptocurrencies</Nav.Link>
-          <Nav.Link  href="#pricing">Exchanges</Nav.Link>
-          <Nav.Link  href="#pricing">Watchlist</Nav.Link>
-          <Nav.Link  href="#pricing">Portfolio</Nav.Link>
+          <Nav.Link disabled href="#features">Cryptocurrencies</Nav.Link>
+          <Nav.Link  disabled href="#pricing">Exchanges</Nav.Link>
+          <Nav.Link  href="#pricing"><Link to="/watchlist">Watchlist</Link></Nav.Link>
+          <Nav.Link  disabled href="#pricing">Portfolio</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

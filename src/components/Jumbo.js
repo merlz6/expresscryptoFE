@@ -4,8 +4,8 @@ import {Jumbotron, Container }from 'react-bootstrap';
 function Jumbo(){
 
   return (
-    <Jumbotron fluid>
-      <Container>
+    <Jumbotron fluid className="jumbo">
+      <Container >
         <h1>ADD BANNER GOES HERE</h1>
         <p>
           This is would be a graphic add

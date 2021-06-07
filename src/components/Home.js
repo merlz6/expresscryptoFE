@@ -1,14 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
-import Navi from './components/Navi'
-import CryptoTable from './components/CryptoTable'
-import Jumbo from './components/Jumbo'
+import '../App.css';
+import Navi from './Navi'
+import CryptoTable from './CryptoTable'
+import Jumbo from './Jumbo'
 import {useState, useEffect, history} from 'react'
-import { Route, Switch } from 'react-router-dom'
-import SingleCrypto from './components/SingleCrypto'
-import Home from './components/Home'
-import Watchlist from './components/Watchlist'
-function App() {
+
+
+
+
+function Home() {
 
 
 const [cryptoList, setCryptoList] = useState([])
@@ -48,23 +47,13 @@ const addToList = (symbol) => {
 
   return (
     <div className="App">
-      <Switch>
-    <Route exact path="/">
-        <Home />
-    </Route>
-    <Route
-        path='/cryptos/:id'
-        render={props => <SingleCrypto />}
-    />
-    <Route
-        path="/watchlist"
-        render={props => <Watchlist />}
-    />
-</Switch>
 
+    <Navi />
+    <Jumbo />
+    <CryptoTable cryptoList={cryptoList.data} addToList={addToList}/>
 
     </div>
   );
 }
 
-export default App;
+export default Home;
