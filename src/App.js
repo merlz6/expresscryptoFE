@@ -54,11 +54,11 @@ const addToList = (symbol) => {
     </Route>
     <Route
         path='/cryptos/:id'
-        render={props => <SingleCrypto />}
+        render={props => <SingleCrypto {...props} cryptolist={cryptoList.data}/>}
     />
     <Route
         path="/watchlist"
-        render={props => <Watchlist />}
+        render={props => <Watchlist watchlist={watchlist} />}
     />
 </Switch>
 

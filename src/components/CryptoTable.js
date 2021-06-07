@@ -1,5 +1,5 @@
 import Table from 'react-bootstrap/Table';
-
+import { Link } from 'react-router-dom'
 function CryptoTable(props) {
 
   const loaded = () => {
@@ -11,7 +11,7 @@ function CryptoTable(props) {
           <tr key={index}>
           <td className="favoriteStarHolder" onClick={(()=> props.addToList(crypto.symbol) )}><img src="https://img.icons8.com/metro/20/000000/star.png"/></td>
           <td>{index + 1}</td>
-          <td><div className="coinNameHolder"><img className="coinIcon" src={imageString} /><span className="cryptoNameSpan">{crypto.name}</span> <span className="cryptoSymbolSpan">{crypto.symbol}</span></div></td>
+          <td><div className="coinNameHolder"><img className="coinIcon" src={imageString} /><span className="cryptoNameSpan"><Link to={`/cryptos/${crypto.id}`}>{crypto.name}</Link></span> <span className="cryptoSymbolSpan">{crypto.symbol}</span></div></td>
           <td>{crypto.quote.USD.price.toLocaleString('us-US', { style: 'currency', currency: 'USD', maximumFractionDigits:2 })}</td>
           <td className={crypto.quote.USD.percent_change_24h > 0 ? 'green' : 'red'}>
           <img src={crypto.quote.USD.percent_change_24h > 0 ? 'https://img.icons8.com/android/20/178000/sort-up.png' : 'https://img.icons8.com/android/20/ff0000/sort-down.png'}/>  {crypto.quote.USD.percent_change_24h.toFixed(2)}
