@@ -4,7 +4,7 @@ import Navi from './components/Navi'
 import CryptoTable from './components/CryptoTable'
 import Jumbo from './components/Jumbo'
 import {useState, useEffect, history} from 'react'
-import { Route, Switch, History } from 'react-router-dom'
+import { Route, Switch} from 'react-router-dom'
 import SingleCrypto from './components/SingleCrypto'
 import Home from './components/Home'
 import Watchlist from './components/Watchlist'
@@ -24,7 +24,7 @@ const indexGetRequest = () => {
 
 useEffect(() => {
   localStorage.setItem('watchlist', JSON.stringify(watchlist))
-}, [watchlist])
+}, [])
 
 useEffect(()=> {
   indexGetRequest()
@@ -42,18 +42,20 @@ const addToList = (symbol) => {
     setWatchlist(newArr)
   }
   console.log(watchlist)
+
 }
 
 const deleteFromWatchlist = (symbol) => {
 let index = watchlist.indexOf(symbol)
+let newArr = watchlist
 console.log(index , 'this is the index')
   if(watchlist.includes(symbol)){
 
-    let newArr = watchlist
-    newArr.splice(index,1)
-    setWatchlist(newArr)
-  }
 
+    newArr.splice(index,1)
+
+  }
+  setWatchlist(newArr)
 }
 
 

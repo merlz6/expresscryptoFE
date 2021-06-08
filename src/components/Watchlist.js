@@ -7,8 +7,7 @@ import Navi from './Navi'
 function Watchlist (props){
 
 const [watched, setWatched] = useState([])
-
-  let cryptos = props.watchlist
+const [cryptos, setCryptos] = useState(props.watchlist)
 
 
 const filter = () => {
@@ -26,9 +25,8 @@ const filter = () => {
 
 const deleter = (event, symbol) => {
   event.preventDefault()
-    
-  props.deleteFromWatchlist(crypto.symbol)
 
+  props.deleteFromWatchlist(crypto.symbol)
 }
 
 
@@ -38,7 +36,7 @@ const deleter = (event, symbol) => {
         let imageString = 'https://s2.coinmarketcap.com/static/img/coins/32x32/' +crypto.id + '.png'
         return (
           <tr key={index}>
-          <td className="favoriteStarHolder" onClick={(()=> {delete(crypto.symbol)} )}><img src="https://img.icons8.com/windows/20/000000/delete-forever.png"/></td>
+          <td className="favoriteStarHolder" onClick={(()=> {props.deleteFromWatchlist(crypto.symbol)} )}><img src="https://img.icons8.com/windows/20/000000/delete-forever.png"/></td>
           <td>{index + 1}</td>
           <td><div className="coinNameHolder"><img className="coinIcon" src={imageString} /><span className="cryptoNameSpan"><Link to={`/cryptos/${crypto.id}`}>{crypto.name}</Link></span> <span className="cryptoSymbolSpan">{crypto.symbol}</span></div></td>
           <td>{crypto.quote.USD.price.toLocaleString('us-US', { style: 'currency', currency: 'USD', maximumFractionDigits:2 })}</td>
@@ -65,7 +63,8 @@ const deleter = (event, symbol) => {
 
 useEffect(()=> {
   filter()
-},[props.watchlist])
+  {cryptos ? loaded(): loading()}
+},[cryptos])
 
 return (
   <>
