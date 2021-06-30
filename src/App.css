@@ -6,11 +6,17 @@
   flex-direction: row;
   /* justify-content: space-around; */
 }
-
-td {
-  font-size: 15px;
+nav > a {
+  color:ghostWhite;
 }
-
+td {
+  font-size: 14px;
+  font-weight: 500;
+}
+th {
+  font-size: 12px;
+  font-weight: bold;
+}
 
 .cryptoSymbolSpan {
   font-size: 13px;
@@ -18,7 +24,13 @@ td {
   font-weight: 600;
 }
 
-
+.jumbo {
+  height: 150px;
+  margin-bottom: 0px;
+}
+.jumbotron {
+    margin-bottom: 0px;
+ }
 
 .cryptoNameSpan {
 
@@ -38,11 +50,13 @@ table {
   text-align: left;
 }
 
-
 .red {
   color:red;
 }
 
 .green {
   color:green;
+}
+.rightaligners {
+  text-align: right;
 }

@@ -12,7 +12,7 @@ function Navi() {
         <Nav className="ml-auto" c>
           <Nav.Link disabled href="#features">Cryptocurrencies</Nav.Link>
           <Nav.Link  disabled href="#pricing">Exchanges</Nav.Link>
-          <Nav.Link  href="#pricing"><Link to="/watchlist">Watchlist</Link></Nav.Link>
+          <Nav.Link  href="/"><Link to="/watchlist">Watchlist</Link></Nav.Link>
           <Nav.Link  disabled href="#pricing">Portfolio</Nav.Link>
         </Nav>
       </Navbar.Collapse>

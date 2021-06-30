@@ -10,7 +10,10 @@ const [watched, setWatched] = useState([])
 const [cryptos, setCryptos] = useState(props.watchlist)
 
 
+
 const filter = () => {
+  let newOb = props.watchlist
+  setCryptos(newOb)
   let watcher = []
   for(var arr in props.cryptolist){
      for(var filter in cryptos){
@@ -50,6 +53,8 @@ const deleter = (event, symbol) => {
           <td>{crypto.quote.USD.market_cap.toLocaleString('us-US', { style: 'currency', currency: 'USD', maximumFractionDigits:0 })}</td>
           <td>{crypto.quote.USD.volume_24h.toLocaleString('us-US', { style: 'currency', currency: 'USD', maximumFractionDigits:0 })}</td>
           <td>{crypto.circulating_supply.toLocaleString()} { " " + crypto.symbol}</td>
+            <td> <img src={crypto.quote.USD.percent_change_7d > 0 ? "greenwhitebg.png" : "redwhitebg.png"} />
+            </td>
           </tr>
         )
       })
@@ -63,8 +68,7 @@ const deleter = (event, symbol) => {
 
 useEffect(()=> {
   filter()
-  {cryptos ? loaded(): loading()}
-},[cryptos])
+},[])
 
 return (
   <>
@@ -82,6 +86,7 @@ return (
     <th>Market Cap</th>
     <th>Volume(24hr)</th>
     <th>Circulating Supply</th>
+    <th>Last 7 Days</th>
     </tr>
     </thead>
     <tbody>
